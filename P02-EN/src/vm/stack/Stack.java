@@ -11,11 +11,11 @@ public class Stack {
 	
 	public void push(int value) {
 		this.stack[sp] = value;
-		sp++;
+		this.sp++;
 	}
 
 	public int pop() {
-		sp--;
-		return stack[sp];
+		this.sp--;
+		return this.stack[sp];
 	}
 }

@@ -1,92 +1,57 @@
 package main;
-import java.io.*;
-import java.util.*;
+
+import vm.VirtualMachine;
+import vm.instruction.*;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Main {
 
-	private static List<String[]> instructions = new ArrayList<String[]>();
-	private static int ip = 0;
+    public static void main(String[] args) {
+        new VirtualMachine(loadProgram("program.txt"), getSupportedInstructions()).executeProgram();
+    }
 
-	private static int[] memory = new int[1024];
+    private static Map<String, Instruction> getSupportedInstructions() {
+        HashMap<String, Instruction> instructions = new HashMap<>();
+        instructions.put("add", new AddInstruction());
+        instructions.put("input", new InputInstruction());
+        instructions.put("jmpg", new JmpgInstruction());
+        instructions.put("jmp", new JmpInstruction());
+        instructions.put("load", new LoadInstruction());
+        instructions.put("mul", new MulInstruction());
+        instructions.put("output", new OutputInstruction());
+        instructions.put("push", new PushInstruction());
+        instructions.put("store", new StoreInstruction());
+        instructions.put("sub", new SubInstruction());
+        return instructions;
+    }
 
-	private static int[] stack = new int[32];
-	
+    private static List<String[]> loadProgram(String filename) {
+        List<String[]> list = new ArrayList<>();
+        String line;
 
-	private static Scanner terminal = new Scanner(System.in);
+        try (BufferedReader file = new BufferedReader(new FileReader(filename))) {
 
-	public static void main(String[] args) throws Exception {
-		BufferedReader file = new BufferedReader(new FileReader("program.txt"));
+            while ((line = file.readLine()) != null)
+                if (!line.trim().isEmpty())
+                    list.add(line.trim().split(" "));
 
-		String line;
-		while ((line = file.readLine()) != null)
-			instructionsLoader(line);
-		file.close();
+        } catch (FileNotFoundException e) {
+            System.err.println("ERROR! File not found: " + filename);
+            System.exit(1);
+        } catch (IOException e) {
+            System.err.println("ERROR! IO Exception occurred");
+            throw new RuntimeException(e);
+        }
 
-		executeProgram();
-	}
+        return list;
+    }
 
-	private static void instructionsLoader(String line) {
-		if (line.trim().length() == 0)
-			return;
-
-		String[] words = line.split(" ");
-		instructions.add(words);
-	}
-
-	private static void push(int value) {
-		stack[sp] = value;
-		sp++;
-	}
-
-	private static int pop() {
-		sp--;
-		return stack[sp];
-	}
-
-	private static void executeProgram() {
-		while (ip < instructions.size()) {
-			String[] instruction = instructions.get(ip);
-
-			if (instruction[0].equals("push")) {
-				push(Integer.parseInt(instruction[1]));
-				ip++;
-			} else if (instruction[0].equals("add")) {
-				push(pop() + pop());
-				ip++;
-			} else if (instruction[0].equals("sub")) {
-				int b = pop();
-				int a = pop();
-				push(a - b);
-				ip++;
-			} else if (instruction[0].equals("mul")) {
-				push(pop() * pop());
-				ip++;
-			} else if (instruction[0].equals("jmp")) {
-				ip = Integer.parseInt(instruction[1]);
-			} else if (instruction[0].equals("jmpg")) {
-				int b = pop();
-				int a = pop();
-				if (a > b)
-					ip = Integer.parseInt(instruction[1]);
-				else
-					ip++;
-			} else if (instruction[0].equals("load")) {
-				int address = pop();
-				push(memory[address]);
-				ip++;
-			} else if (instruction[0].equals("store")) {
-				int value = pop();
-				int address = pop();
-				memory[address] = value;
-				ip++;
-			} else if (instruction[0].equals("input")) {
-				System.out.println("Write a number:");
-				push(terminal.nextInt());
-				ip++;
-			} else if (instruction[0].equals("output")) {
-				System.out.println(pop());
-				ip++;
-			}
-		}
-	}
 }

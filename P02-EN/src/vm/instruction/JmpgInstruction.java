@@ -6,11 +6,6 @@ import vm.stack.Stack;
 public class JmpgInstruction implements Instruction {
 
 	@Override
-	public boolean canExecute(String id) {
-		return id.equals("jmp");
-	}
-
-	@Override
 	public void execute(VirtualMachine vm, String[] rawInstruction) {
 		Stack stack = vm.getStack();
 		int b = stack.pop();
