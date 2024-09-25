@@ -10,7 +10,7 @@ public class Main {
 	private static int[] memory = new int[1024];
 
 	private static int[] stack = new int[32];
-	private static int sp = 0;
+	
 
 	private static Scanner terminal = new Scanner(System.in);
 
