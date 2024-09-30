@@ -36,7 +36,6 @@ public class ProgramLoader {
 
     public static List<Instruction> loadProgram(String filename) {
         List<Instruction> list = new ArrayList<>();
-        List<String> lines = new ArrayList<>();
         String line;
 
         try (BufferedReader file = new BufferedReader(new FileReader(filename))) {
