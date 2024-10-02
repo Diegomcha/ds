@@ -1,0 +1,40 @@
+
+# Figures detection
+
+## Rectangle
+
+1. We want to know if we have clicked inside a rectangle
+a) The Rectangle is defined by:
+    - Top left corner: "Point corner;"
+    - Rectange width and heigh: "int width, heigh;"
+b) The coordinate where the mouse was clicked: "int x,y".
+
+The code that tells us if the Rectangle figure has been clicked on is:
+
+    boolean contains = (corner.x <= x && x <= corner.x + width) && (corner.y <= y && y <= corner.y + height);
+
+
+## Circle
+
+1. We want to know if we have clicked inside a circle
+a) The Circle is defined by:
+    - Circle centre: "Point centre;"
+    - Radius: "int radius;"
+b) The coordinate where the mouse was clicked: "int x,y".
+
+The code that tells us if the Circle figure has been clicked on is:
+
+    double distance = Math.sqrt(Math.pow(x - centre.x, 2) + Math.pow(y - centre.y, 2));
+    boolean contains = distance < radius;
+
+
+## Triángulo
+
+1. We want to know if we have clicked inside a Triangle
+a) The Triangle is defined by three vertices: "Point v1, v2, v3;".
+b) The coordinate where the mouse was clicked: "int x,y".
+
+The code that tells us if the Triangle figure has been clicked on is:
+
+    Point position = new Point(x,y);
+    boolean contains = posicion.equals(v1) || posicion.equals(v2) || posicion.equals(v3);
