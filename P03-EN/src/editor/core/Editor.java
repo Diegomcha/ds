@@ -1,54 +1,101 @@
 package editor.core;
 
+import editor.tool.SelectionTool;
 import editor.tool.Tool;
+import editor.tool.figure.CircleTool;
+import editor.tool.figure.RectangleTool;
+import editor.tool.figure.TriangleTool;
 import editor.util.Point;
 
+/**
+ * The Editor class is responsible for managing the editor's state, drawings and tools.
+ */
 public class Editor {
 
-	private final Drawing drawing;
-	private Tool activeTool;
-	
-	public Editor() {
-		drawing = new Drawing();
-	}
+    private final Drawing drawing;
+    private Tool tool;
 
-	public void draw() {
-		// Drawing menu
-		// Drawing the lateral tool bar
-		// Drawing the context line
-		drawing.draw();
-	}
-	
-	public void useDefaultTool() {
-		// TODO:
-	}
+    /**
+     * Create a new instance of the Editor.
+     */
+    public Editor() {
+        // Just manages one drawing
+        drawing = new Drawing();
+        // Select default tool
+        this.clickToolButton("default");
+    }
 
-	// $ Methods from the user interface -----------------------------
+    // $ UI related methods -----------------------------------------
 
-	// Click the tool button to activate it
-	public void clickToolButton(String toolName) {
-		// ?
-	}
+    /**
+     * Draw the current drawing.
+     */
+    public void draw() {
+        System.out.println(drawing.draw());
+    }
 
-	public void click(int x, int y) {
-		if (this.activeTool != null)
-			this.activeTool.click(new Point(x, y));
-	}
+    /**
+     * Click event on a tool button.
+     *
+     * @param toolName The name of the tool button.
+     */
+    public void clickToolButton(String toolName) {
+        this.tool = switch (toolName) {
+            case "triangle" -> new TriangleTool(this);
+            case "rectangle" -> new RectangleTool(this);
+            case "circle" -> new CircleTool(this);
+            default -> new SelectionTool(this);
+        };
+    }
 
-	public void drag(int x, int y) {
-//		if (this.activeTool != null)
-//			this.activeTool.drag(new Point(x, y));
-	}
+    /**
+     * Click event on the drawing area.
+     *
+     * @param x The x-coordinate of the click.
+     * @param y The y-coordinate of the click.
+     */
+    public void click(int x, int y) {
+        this.tool.click(new Point(x, y));
+    }
 
-	public void drop(int x, int y) {
-		if (this.activeTool != null)
-			this.activeTool.drop(new Point(x, y));
-	}
+    /**
+     * Drag event on the drawing area.
+     *
+     * @param x The x-coordinate of the drag.
+     * @param y The y-coordinate of the drag.
+     */
+    public void drag(int x, int y) {
+        this.tool.drag(new Point(x, y));
+    }
 
-	// $ Drawing Methods -----------------------------
+    /**
+     * Drop event on the drawing area.
+     *
+     * @param x The x-coordinate of the drop.
+     * @param y The y-coordinate of the drop.
+     */
+    public void drop(int x, int y) {
+        this.tool.drop(new Point(x, y));
+    }
 
-	public Drawing getDrawing() {
-		return drawing;
-	}
+    /**
+     * Gets the prompt for the active tool.
+     *
+     * @return The prompt for the active tool.
+     */
+    public String getPrompt() {
+        return this.tool.getPrompt();
+    }
+
+    // $ Getters ----------------------------------------------------
+
+    /**
+     * Gets the active drawing of the editor.
+     *
+     * @return The active drawing.
+     */
+    public Drawing getDrawing() {
+        return drawing;
+    }
 
 }

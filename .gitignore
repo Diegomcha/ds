@@ -1,11 +1,9 @@
 # IntelliJ
 .idea
 */*.iml
-*/*.ipr
 out/
 
 # Eclipse
-bin/
 */.settings/
 */bin/
 */.project
