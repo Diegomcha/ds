@@ -1,6 +1,7 @@
 package form;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Form {
 	public void addField(Field field) {
