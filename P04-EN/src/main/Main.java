@@ -17,8 +17,8 @@ public class Main {
 	public static void main(String[] args) {
 		Form form = new Form();
 
+		// Common variables for fields
 		String[] cities = new String[] { "Santander", "Oviedo", "Barcelona" };
-
 		Validator postalCodeValidator = new AndJoinValidator(new DigitsValidator(), new LengthValidator(5));
 
 		form.addField(new Field("Name", new TextValidator()));

@@ -14,11 +14,11 @@ public class Form {
 			System.out.println(campo.getData());
 		}
 	}
-	
-	public void writeForm () {
+
+	public void writeForm() {
 		System.out.println("\nFORM:");
 		for (Field f : fields)
-			System.out.println(f.getLabel() + ": " +f.getData());
+			System.out.println(f.getLabel() + ": " + f.getData());
 	}
 
 	private List<Field> fields = new ArrayList<>();

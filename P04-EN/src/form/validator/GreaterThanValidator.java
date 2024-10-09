@@ -1,13 +1,13 @@
 package form.validator;
 
 public class GreaterThanValidator implements Validator {
-	
+
 	private final int value;
-	
+
 	public GreaterThanValidator(int value) {
 		this.value = value;
 	}
-	
+
 	@Override
 	public boolean validate(String input) {
 		try {
@@ -16,5 +16,5 @@ public class GreaterThanValidator implements Validator {
 			return false;
 		}
 	}
-	
+
 }
