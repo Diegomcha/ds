@@ -25,6 +25,7 @@ public class Main {
 
         System.out.println("\nTools activation: rectangle | circle | triangle | selection");
         System.out.println("Mouse actions: click x,y | drag x,y | drop x,y");
+        System.out.println("History commands: undo | redo");
         System.out.println("Other commands: draw | exit \n");
 
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
@@ -59,7 +60,15 @@ public class Main {
 
             else if (line[0].startsWith("dro"))
                 editor.mouseReleased(Integer.parseInt(line[1]), Integer.parseInt(line[2]));
+            
+            // $ History commands ---------------------------
+            
+            else if (line[0].startsWith("und"))
+            		System.out.println(editor.undo() ? "Undone last change" : "No change to undo");
+            else if (line[0].startsWith("red"))
+        		System.out.println(editor.redo() ? "Redone last change" : "No change to redo");
 
+            
             // $ Other commands -----------------------------
 
             else if (line[0].startsWith("draw"))

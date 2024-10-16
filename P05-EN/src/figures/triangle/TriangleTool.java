@@ -3,6 +3,7 @@ package figures.triangle;
 import java.awt.Point;
 
 import editor.core.*;
+import editor.history.change.CreateFigureChange;
 
 public class TriangleTool implements Tool {
     public TriangleTool(EditorWindow editor) {
@@ -15,6 +16,7 @@ public class TriangleTool implements Tool {
             Figure figura = new Triangle(vertice[0], vertice[1], vertice[2]);
             editor.getDrawing().addFigura(figura);
             vertices = 0;
+            this.editor.addChange(new CreateFigureChange(this.editor.getDrawing(), figura));
             editor.finHerramienta();
         }
     }

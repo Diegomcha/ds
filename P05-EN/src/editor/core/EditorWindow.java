@@ -1,7 +1,10 @@
 package editor.core;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
+import editor.history.History;
+import editor.history.change.Change;
 import editor.tools.SelectionTool;
 import figures.circle.CircleTool;
 import figures.rectangle.RectangleTool;
@@ -10,13 +13,14 @@ import figures.triangle.TriangleTool;
 public class EditorWindow {
 
     private Drawing drawing;
+    private History history;
     private Map<String, Tool> tools;
     private Tool tool;
     private Tool selection;
 
     public EditorWindow() {
         drawing = new Drawing();
-
+        history = new History();
         tools = new HashMap<>();
         doCreaHerramientas(tools);
         tool = selection = tools.get("selection");
@@ -60,7 +64,22 @@ public class EditorWindow {
     public Tool getTool() {
         return tool;
     }
+    
+    // $ History methods -----------------------------
 
+    
+    public boolean redo() {
+    	return this.history.redo();
+    }
+    
+    public boolean undo() {
+    	return this.history.undo();
+    }
+    
+    public void addChange(Change c) {
+    	this.history.add(c);
+    }
+    
     // $ Drawing methods -----------------------------
 
     public Drawing getDrawing() {

@@ -3,6 +3,7 @@ package editor.tools;
 import java.awt.Point;
 
 import editor.core.*;
+import editor.history.change.CreateFigureChange;
 
 public abstract class CreationalTool implements Tool {
 
@@ -26,7 +27,7 @@ public abstract class CreationalTool implements Tool {
         end = new Point(x, y);
         Figure figure = doCreateFigure(begin, end);
         editor.getDrawing().addFigura(figure);
-
+        editor.addChange(new CreateFigureChange(editor.getDrawing(), figure));
         editor.finHerramienta();
     }
 

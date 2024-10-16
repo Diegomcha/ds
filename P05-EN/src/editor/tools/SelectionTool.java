@@ -3,6 +3,7 @@ package editor.tools;
 import java.awt.Point;
 
 import editor.core.*;
+import editor.history.change.MoveFigureChange;
 
 public class SelectionTool implements Tool {
 
@@ -10,6 +11,7 @@ public class SelectionTool implements Tool {
 
     private Figure selected;
     private Point lastPosition;
+    private Point firstPosition;
 
     public SelectionTool(EditorWindow editor) {
         this.editor = editor;
@@ -18,6 +20,7 @@ public class SelectionTool implements Tool {
     public void mousePressed(int x, int y) {
         selected = editor.getDrawing().getFigura(x, y);
         lastPosition = new Point(x, y);
+        firstPosition = new Point(x, y);
     }
 
     public void mouseMoved(int x, int y) {
@@ -26,6 +29,7 @@ public class SelectionTool implements Tool {
 
     public void mouseReleased(int x, int y) {
         mueveIncremento(x, y);
+        editor.addChange(new MoveFigureChange(selected, lastPosition.x - firstPosition.x, lastPosition.y - firstPosition.y));
         selected = null;
     }
 
