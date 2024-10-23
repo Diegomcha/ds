@@ -1,8 +1,13 @@
 package main;
 
 import database.Database;
-import google.maps.*;
-import model.*;
+import google.maps.Map;
+import model.Monument;
+import model.Photo;
+import model.Restaurant;
+import model.bookmarks.MonumentBookmark;
+import model.bookmarks.PhotoBookmark;
+import model.bookmarks.RestaurantBookmark;
 
 public class Main {
 
@@ -15,15 +20,15 @@ public class Main {
 		System.out.println("\n 1. Putting bookmaks on the map");
 
 		for (Monument monument : db.selectMonuments()) {
-			// map.add(monument);
+			 map.add(new MonumentBookmark(monument));
 		}
 
 		for (Photo photo : db.selectPhotos()) {
-			// map.add(photo);
+			 map.add(new PhotoBookmark(photo));
 		}
 
 		for (Restaurant restaurant : db.selectRestaurants()) {
-			// map.add(restaurant);
+			 map.add(new RestaurantBookmark(restaurant));
 		}
 
 		// 2. BookMarks for items added to the map are drawn on the map.
