@@ -5,6 +5,10 @@ import java.util.Objects;
 
 import fileSystem.Output;
 
+/**
+ * THIS IS A DECORATOR BECAUSE THE INTERFACE IS THE SAME, it would be ADAPTER if the interfaces were different...
+ */
+
 public abstract class BaseTransformer implements Output {
 
 	protected final Output out;
