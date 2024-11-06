@@ -4,7 +4,7 @@ import java.io.*;
 
 public class TextUserInterface {
 
-	public void rellena(Question encuesta) throws IOException {
+	public void fill(Question encuesta) throws IOException {
 
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 

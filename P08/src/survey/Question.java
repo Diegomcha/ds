@@ -1,10 +1,17 @@
 package survey;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import survey.out.Output;
+
 public class Question {
 
-	private int yes;
-	private int no;
-	private String surveyQuestion;
+	private int yes = 0;
+	private int no = 0;
+
+	private final String surveyQuestion;
+	private final List<Output> outs = new ArrayList<>();
 
 	public Question(String surveyQuestion) {
 		this.surveyQuestion = surveyQuestion;
@@ -22,31 +29,27 @@ public class Question {
 		return no;
 	}
 
+	public void addOutput(Output out) {
+		this.outs.add(out);
+	}
+
+	public void removeOutput(Output out) {
+		this.outs.remove(out);
+	}
+
 	public void incrementYes() {
 		yes++;
-		updatePieChart();
-		updateBarGraph();
-		makeBackup();
+		updateData();
 	}
 
 	public void incrementNo() {
 		no++;
-		updatePieChart();
-		updateBarGraph();
-		makeBackup();
+		updateData();
 	}
 
-	// Simulation of data presentation
-	private void updatePieChart() {
-		System.out.println("Here will be drown the Pie Chart.");
-	}
-
-	private void updateBarGraph() {
-		System.out.println("Here will be drown the Bar Graph.");
-	}
-
-	private void makeBackup() {
-		System.out.println("Here will be saved the data on disc/BD.");
+	private void updateData() {
+		for (Output out : outs)
+			out.update(this);
 	}
 
 }
