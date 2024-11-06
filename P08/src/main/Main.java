@@ -26,11 +26,11 @@ public class Main {
 		Question survey = new Question("Are you in favor of nuclear energy?");
 
 		// Set configuration
-//		configure0(survey);
-//		configure1(survey);
-//		configure2(survey);
-//		configure3(survey);
-//		configure4(survey);
+		configure0(survey);
+		configure1(survey);
+		configure2(survey);
+		configure3(survey);
+		configure4(survey);
 		configure5(survey);
 
 		TextUserInterface userInterface = new TextUserInterface();
@@ -44,28 +44,23 @@ public class Main {
 	}
 
 	private static void configure1(Question q) {
-		configure0(q);
 		q.addOutput(statusBar);
 	}
 
 	private static void configure2(Question q) {
-		configure1(q);
 		q.removeOutput(barGraph);
 	}
 
 	private static void configure3(Question q) {
-		configure2(q);
 		q.removeOutput(pieChart);
 		q.addOutput(delayPieChart);
 	}
 
 	private static void configure4(Question q) {
-		configure3(q);
 		q.addOutput(periodicBarGraph);
 	}
 
 	private static void configure5(Question q) {
-		configure4(q);
 		q.removeOutput(statusBar);
 		q.addOutput(periodicDelayedStatusBar);
 	}
