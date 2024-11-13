@@ -1,6 +1,15 @@
 package print;
 
 import nodes.*;
+import nodes.expression.Addition;
+import nodes.expression.Division;
+import nodes.expression.IntConstant;
+import nodes.expression.Product;
+import nodes.expression.Variable;
+import nodes.statement.Assignment;
+import nodes.statement.Print;
+import nodes.statement.Read;
+import nodes.statement.Statement;
 
 /*
  * Inconveniences: All the code for all the Nodes is in one anly method

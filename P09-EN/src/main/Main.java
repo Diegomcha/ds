@@ -3,7 +3,17 @@ package main;
 import java.util.*;
 
 import nodes.*;
+import nodes.expression.Addition;
+import nodes.expression.Division;
+import nodes.expression.IntConstant;
+import nodes.expression.Product;
+import nodes.expression.Variable;
+import nodes.statement.Assignment;
+import nodes.statement.Print;
+import nodes.statement.Read;
+import nodes.statement.Statement;
 import print.*;
+import visitor.EvalVisitor;
 import visitor.PrintVisitor;
 
 public class Main {
@@ -13,10 +23,7 @@ public class Main {
 		// 1. Build the tree ---------------------------------------------
 
 		/*
-		 * read width;
-		 * read length;
-		 * area = length * width / 2;
-		 * print area + 10;
+		 * read width; read length; area = length * width / 2; print area + 10;
 		 */
 
 		List<Statement> statements = new ArrayList<>();
@@ -44,13 +51,17 @@ public class Main {
 
 		// Do not compile
 		System.out.println("\n--- Ideal traversal: it does not compile");
-		IdealVersion ideal = new IdealVersion();
+//		IdealVersion ideal = new IdealVersion();
 		// ideal.visit(prog);
 
 		// Nake the next work properly:
-		System.out.println("\n--- Visitor pattern traversal: not made");
+		System.out.println("\n--- Visitor pattern traversal");
 		PrintVisitor print = new PrintVisitor();
-		// prog.accept(print, null);
+		prog.accept(print, null);
+		
+		System.out.println("\n--- Visitor pattern eval");
+		EvalVisitor eval = new EvalVisitor();
+		prog.accept(eval, null);
 
 	}
 }
