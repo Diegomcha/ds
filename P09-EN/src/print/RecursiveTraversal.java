@@ -1,6 +1,7 @@
 package print;
 
-import nodes.*;
+import nodes.Node;
+import nodes.Program;
 import nodes.expression.Addition;
 import nodes.expression.Division;
 import nodes.expression.IntConstant;

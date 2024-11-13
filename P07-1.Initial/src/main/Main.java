@@ -1,6 +1,6 @@
 package main;
 
-import java.io.*;
+import java.io.IOException;
 
 import fileSystem.FileSystem;
 

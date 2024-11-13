@@ -1,8 +1,9 @@
 package validations.composite;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
-import form.*;
+import form.Validation;
 
 public class CheckAll implements Validation {
 

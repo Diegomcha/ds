@@ -1,7 +1,8 @@
 package adapters;
 
-import google.maps.*;
-import model.*;
+import google.maps.BookMark;
+import google.maps.Coordinates;
+import model.Photo;
 
 public class PhotoBookmarkAdapter implements BookMark {
 

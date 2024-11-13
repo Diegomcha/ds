@@ -20,22 +20,23 @@ public class Main {
 		System.out.println("\n 1. Putting bookmaks on the map");
 
 		for (Monument monument : db.selectMonuments()) {
-			 map.add(new MonumentBookmark(monument));
+			map.add(new MonumentBookmark(monument));
 		}
 
 		for (Photo photo : db.selectPhotos()) {
-			 map.add(new PhotoBookmark(photo));
+			map.add(new PhotoBookmark(photo));
 		}
 
 		for (Restaurant restaurant : db.selectRestaurants()) {
-			 map.add(new RestaurantBookmark(restaurant));
+			map.add(new RestaurantBookmark(restaurant));
 		}
 
 		// 2. BookMarks for items added to the map are drawn on the map.
 		System.out.println("\n 2. Drawing the map with the bookmarkrs");
 		map.draw();
 
-		// 3. The user briefly presses on the screen to receive information about each item
+		// 3. The user briefly presses on the screen to receive information about each
+		// item
 		System.out.println("\n 3. Short press on each item: information on tooltip");
 		map.shortClick(31, 31); // Click on Monument: Name and author of the monument (Coliseum)
 		map.shortClick(21, 21); // Click on Photo: Description of the photo and user who uploaded it

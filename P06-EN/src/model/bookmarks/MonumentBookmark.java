@@ -11,7 +11,7 @@ public class MonumentBookmark extends BaseBookmark<Monument> {
 
 	@Override
 	public Coordinates getCoordinates() {
-		return this.nav.getCoordinates(this.item.getAddress()) ;
+		return this.nav.getCoordinates(this.item.getAddress());
 	}
 
 	@Override

@@ -5,8 +5,8 @@ import session2.vm.VirtualMachine;
 
 public class Main {
 
-    public static void main(String[] args) {
-        new VirtualMachine(ProgramLoader.loadProgram("program.txt")).executeProgram();
-    }
+	public static void main(String[] args) {
+		new VirtualMachine(ProgramLoader.loadProgram("program.txt")).executeProgram();
+	}
 
 }

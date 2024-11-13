@@ -1,8 +1,9 @@
 package main;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-import nodes.*;
+import nodes.Program;
 import nodes.expression.Addition;
 import nodes.expression.Division;
 import nodes.expression.IntConstant;
@@ -12,7 +13,7 @@ import nodes.statement.Assignment;
 import nodes.statement.Print;
 import nodes.statement.Read;
 import nodes.statement.Statement;
-import print.*;
+import print.RecursiveTraversal;
 import visitor.EvalVisitor;
 import visitor.PrintVisitor;
 
@@ -58,7 +59,7 @@ public class Main {
 		System.out.println("\n--- Visitor pattern traversal");
 		PrintVisitor print = new PrintVisitor();
 		prog.accept(print, null);
-		
+
 		System.out.println("\n--- Visitor pattern eval");
 		EvalVisitor eval = new EvalVisitor();
 		prog.accept(eval, null);

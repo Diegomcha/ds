@@ -23,16 +23,16 @@ public class Main {
 	public static double readCelciusSensor() {
 		return Math.random() * 30;
 	}
-	
+
 	private static Temperature computeTempAverage(Temperature[] temps) {
 		double avg = 0;
-		
+
 		for (int i = 0; i < temps.length; i++)
 			avg += temps[i].getCelsius();
-		
+
 		return new Temperature(avg / temps.length);
 	}
-	
+
 	private static double computeTempFahrenheitVariance(Temperature[] temps, double farenheitAvg) {
 		double variance = 0;
 		for (int i = 0; i < temps.length; i++)

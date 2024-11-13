@@ -1,6 +1,7 @@
 package proposal1;
 
-import google.maps.*;
+import google.maps.BookMark;
+import google.maps.Coordinates;
 
 public class Monument implements BookMark {
 	// ----------------------------------------------

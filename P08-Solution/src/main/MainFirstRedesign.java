@@ -1,9 +1,12 @@
 package main;
 
-import java.io.*;
+import java.io.IOException;
 
-import observers.*;
-import survey.*;
+import observers.Backup;
+import observers.BarGraph;
+import observers.PieChart;
+import survey.Question;
+import survey.TextUserInterface;
 
 public class MainFirstRedesign {
 
@@ -13,7 +16,7 @@ public class MainFirstRedesign {
 		BarGraph bg = new BarGraph();
 		PieChart pc = new PieChart();
 		Backup bu = new Backup();
-		
+
 		/*
 		 * New design
 		 */

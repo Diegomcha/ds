@@ -1,6 +1,7 @@
 package editor.core;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 import editor.tools.SelectionTool;
 import figures.circle.CircleTool;
@@ -9,85 +10,85 @@ import figures.triangle.TriangleTool;
 
 public class EditorWindow {
 
-    private Drawing drawing;
-    private Map<String, Tool> tools;
-    private Tool tool;
-    private Tool selection;
-    
-    private ChangesRecord record = new ChangesRecord();
+	private Drawing drawing;
+	private Map<String, Tool> tools;
+	private Tool tool;
+	private Tool selection;
 
-    public EditorWindow() {
-        drawing = new Drawing();
+	private ChangesRecord record = new ChangesRecord();
 
-        tools = new HashMap<>();
-        doCreaHerramientas(tools);
-        tool = selection = tools.get("selection");
-    }
+	public EditorWindow() {
+		drawing = new Drawing();
 
-    protected void doCreaHerramientas(Map<String, Tool> tools) {
-        tools.put("rectangle", new RectangleTool(this));
-        tools.put("circle", new CircleTool(this));
-        tools.put("triangle", new TriangleTool(this));
-        tools.put("selection", new SelectionTool(this));
-    }
+		tools = new HashMap<>();
+		doCreaHerramientas(tools);
+		tool = selection = tools.get("selection");
+	}
 
-    // $ User interface methods -----------------------------
+	protected void doCreaHerramientas(Map<String, Tool> tools) {
+		tools.put("rectangle", new RectangleTool(this));
+		tools.put("circle", new CircleTool(this));
+		tools.put("triangle", new TriangleTool(this));
+		tools.put("selection", new SelectionTool(this));
+	}
 
-    public void toolButtonClicked(String name) {
-        setTool(tools.get(name));
-    }
+	// $ User interface methods -----------------------------
 
-    public void mousePressed(int x, int y) {
-        tool.mousePressed(x, y);
-    }
+	public void toolButtonClicked(String name) {
+		setTool(tools.get(name));
+	}
 
-    public void mouseMoved(int x, int y) {
-        tool.mouseMoved(x, y);
-    }
+	public void mousePressed(int x, int y) {
+		tool.mousePressed(x, y);
+	}
 
-    public void mouseReleased(int x, int y) {
-        tool.mouseReleased(x, y);
-    }
+	public void mouseMoved(int x, int y) {
+		tool.mouseMoved(x, y);
+	}
 
-    // $ Tools Methods ---------------------
+	public void mouseReleased(int x, int y) {
+		tool.mouseReleased(x, y);
+	}
 
-    public void setTool(Tool tool) {
-        this.tool = tool;
-    }
+	// $ Tools Methods ---------------------
 
-    public void endTool() {
-        tool = selection;
-    }
+	public void setTool(Tool tool) {
+		this.tool = tool;
+	}
 
-    public Tool getTool() {
-        return tool;
-    }
+	public void endTool() {
+		tool = selection;
+	}
 
-    // $ Drawing methods -----------------------------
+	public Tool getTool() {
+		return tool;
+	}
 
-    public Drawing getDrawing() {
-        return drawing;
-    }
+	// $ Drawing methods -----------------------------
 
-    public void dibujar() {
+	public Drawing getDrawing() {
+		return drawing;
+	}
 
-        drawing.dibuja();
+	public void dibujar() {
 
-        System.out.println("  [" + tool + " active]");
-        System.out.println();
-    }
+		drawing.dibuja();
 
-    // $ Undo y Redo -----------------------------
-    
-    public void addChange (Change change) {
-    	record.addChange(change);
-    }
-    
-    public void undo () {
-    	record.undo();
-    }
-    
-    public void redo () {
-    	record.redo();
-    }
+		System.out.println("  [" + tool + " active]");
+		System.out.println();
+	}
+
+	// $ Undo y Redo -----------------------------
+
+	public void addChange(Change change) {
+		record.addChange(change);
+	}
+
+	public void undo() {
+		record.undo();
+	}
+
+	public void redo() {
+		record.redo();
+	}
 }

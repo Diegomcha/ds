@@ -1,10 +1,13 @@
 package database;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import google.maps.Coordinates;
-
-import java.util.*;
-
-import model.*;
+import model.Monument;
+import model.Photo;
+import model.Restaurant;
 
 // Class that simulates access to the Database
 public class Database {

@@ -1,23 +1,24 @@
 package editor.core;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class AbstracEditorWindow {
 
-    private Drawing drawing;
-    private Map<String, Tool> tools;
-    private Tool tool;
-    private Tool selection;
+	private Drawing drawing;
+	private Map<String, Tool> tools;
+	private Tool tool;
+	private Tool selection;
 
-    public AbstracEditorWindow() {
-        drawing = new Drawing();
+	public AbstracEditorWindow() {
+		drawing = new Drawing();
 
-        tools = new HashMap<>();
-        doCreaHerramientas(tools);
-        tool = selection = tools.get("selection");
-    }
+		tools = new HashMap<>();
+		doCreaHerramientas(tools);
+		tool = selection = tools.get("selection");
+	}
 
-    protected abstract void doCreaHerramientas(Map<String, Tool> tools);
+	protected abstract void doCreaHerramientas(Map<String, Tool> tools);
 
 //    protected void doCreaHerramientas(Map<String, Tool> tools) {
 //        tools.put("rectangle", new RectangleTool(this));
@@ -26,50 +27,50 @@ public abstract class AbstracEditorWindow {
 //        tools.put("selection", new SelectionTool(this));
 //    }
 
-    // $ User interface methods -----------------------------
+	// $ User interface methods -----------------------------
 
-    public void toolButtonClicked(String name) {
-        setTool(tools.get(name));
-    }
+	public void toolButtonClicked(String name) {
+		setTool(tools.get(name));
+	}
 
-    public void mousePressed(int x, int y) {
-        tool.mousePressed(x, y);
-    }
+	public void mousePressed(int x, int y) {
+		tool.mousePressed(x, y);
+	}
 
-    public void mouseMoved(int x, int y) {
-        tool.mouseMoved(x, y);
-    }
+	public void mouseMoved(int x, int y) {
+		tool.mouseMoved(x, y);
+	}
 
-    public void mouseReleased(int x, int y) {
-        tool.mouseReleased(x, y);
-    }
+	public void mouseReleased(int x, int y) {
+		tool.mouseReleased(x, y);
+	}
 
-    // $ Tools Methods ---------------------
+	// $ Tools Methods ---------------------
 
-    public void setTool(Tool tool) {
-        this.tool = tool;
-    }
+	public void setTool(Tool tool) {
+		this.tool = tool;
+	}
 
-    public void finHerramienta() {
-        tool = selection;
-    }
+	public void finHerramienta() {
+		tool = selection;
+	}
 
-    public Tool getTool() {
-        return tool;
-    }
+	public Tool getTool() {
+		return tool;
+	}
 
-    // $ Drawing methods -----------------------------
+	// $ Drawing methods -----------------------------
 
-    public Drawing getDrawing() {
-        return drawing;
-    }
+	public Drawing getDrawing() {
+		return drawing;
+	}
 
-    public void dibujar() {
+	public void dibujar() {
 
-        drawing.dibuja();
+		drawing.dibuja();
 
-        System.out.println("  [" + tool + " active]");
-        System.out.println();
-    }
+		System.out.println("  [" + tool + " active]");
+		System.out.println();
+	}
 
 }

@@ -1,9 +1,11 @@
 package main;
+
 import model.Customer;
 import model.Movie;
 import model.Rental;
 import model.category.ChildrensCategory;
 import model.category.RegularCategory;
+
 public class Main {
 
 	public static void main(String[] args) {

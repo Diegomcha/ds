@@ -1,6 +1,7 @@
 package form;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Form {
 	public void addField(Field field) {
@@ -14,11 +15,11 @@ public class Form {
 		}
 	}
 
-	public void writeForm () {
+	public void writeForm() {
 		System.out.println("\nFORM:");
 		for (Field f : fields)
-			System.out.println(f.getLabel() + ": " +f.getData());
+			System.out.println(f.getLabel() + ": " + f.getData());
 	}
-	
+
 	private List<Field> fields = new ArrayList<>();
 }

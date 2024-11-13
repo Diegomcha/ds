@@ -1,7 +1,10 @@
 package main;
 
-import form.*;
-import validations.*;
+import form.Field;
+import form.Form;
+import validations.CheckNumber;
+import validations.CheckText;
+import validations.CheckValues;
 
 public class Main {
 

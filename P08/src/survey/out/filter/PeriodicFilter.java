@@ -19,7 +19,7 @@ public class PeriodicFilter implements Output {
 	public void update(Question question) {
 		if (count++ % periodCount == 0) {
 			this.filteredOutput.update(question);
-		} 
+		}
 	}
 
 }
