@@ -1,7 +1,5 @@
 package print;
 
-import nodes.*;
-
 /*
  * It does not work: there is not multiple-dispatch in Java
  */

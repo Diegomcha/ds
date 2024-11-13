@@ -1,9 +1,6 @@
-# IntelliJ
-.idea
-*/*.iml
-out/
-
 # Eclipse
+.metadata/
+.sonarlint/
 */.settings/
 */bin/
 */.project
