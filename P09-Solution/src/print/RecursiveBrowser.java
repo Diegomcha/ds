@@ -1,0 +1,47 @@
+package print;
+
+import nodes.*;
+
+/*
+ * Inconveniences: All the code for all the Nodes is in one anly method
+ */
+
+public class RecursiveBrowser {
+
+	public void visit(Node nodo) {
+		if (nodo instanceof Program) {
+			Program programa = (Program) nodo;
+			for (Statement sentencia : programa.statements)
+				visit(sentencia);
+		} else if (nodo instanceof Print) {
+			System.out.print("print ");
+			visit(((Print) nodo).expr);
+			System.out.println(";");
+		} else if (nodo instanceof Read) {
+			System.out.print("read ");
+			visit(((Read) nodo).var);
+			System.out.println(";");
+		} else if (nodo instanceof Assignment) {
+			visit(((Assignment) nodo).variable);
+			System.out.print(" = ");
+			visit(((Assignment) nodo).expr);
+			System.out.println(";");
+		} else if (nodo instanceof IntConstant) {
+			System.out.print(((IntConstant) nodo).value);
+		} else if (nodo instanceof Product) {
+			visit(((Product) nodo).left);
+			System.out.print(" * ");
+			visit(((Product) nodo).right);
+		} else if (nodo instanceof Division) {
+			visit(((Division) nodo).left);
+			System.out.print(" / ");
+			visit(((Division) nodo).right);
+		} else if (nodo instanceof Addition) {
+			visit(((Addition) nodo).left);
+			System.out.print(" + ");
+			visit(((Addition) nodo).right);
+		} else if (nodo instanceof Variable) {
+			System.out.print(((Variable) nodo).name);
+		}
+	}
+}
