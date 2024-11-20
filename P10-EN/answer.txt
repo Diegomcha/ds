@@ -1,0 +1,3 @@
+This implementation follows the Adapter pattern.
+The fundamental advantage is that it is more flexible than the template method in the sense that multiple games can be created using the same adapters. 
+A disadvantage is that it is more complex in the case when we only have a game, like in this case.
