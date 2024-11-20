@@ -1,6 +1,8 @@
 package survey;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -35,7 +37,7 @@ public class TextUserInterface {
 				survey.incrementVote(line[0]);
 			else
 				System.out.print("Wrong option");
-			
+
 		} while (true);
 
 	}

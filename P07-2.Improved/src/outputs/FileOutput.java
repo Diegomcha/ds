@@ -1,5 +1,7 @@
 package outputs;
-import java.io.*;
+
+import java.io.FileWriter;
+import java.io.IOException;
 
 import fileSystem.Output;
 
@@ -14,7 +16,7 @@ public class FileOutput implements Output {
 	}
 
 	public void close() throws IOException {
-			file.close();
+		file.close();
 	}
 
 	private FileWriter file;

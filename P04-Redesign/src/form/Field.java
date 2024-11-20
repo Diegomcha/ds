@@ -1,6 +1,8 @@
 package form;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Field {
 
@@ -29,7 +31,7 @@ public class Field {
 	public String getLabel() {
 		return label;
 	}
-	
+
 	private String text;
 	private String label;
 	private Validation validation;

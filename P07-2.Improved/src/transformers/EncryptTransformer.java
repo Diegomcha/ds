@@ -12,7 +12,7 @@ public class EncryptTransformer extends BaseTransformer {
 
 	@Override
 	public void send(char c) throws IOException {
-		out.send(++c);	
+		out.send(++c);
 	}
 
 }

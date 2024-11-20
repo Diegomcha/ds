@@ -1,6 +1,7 @@
 package observers;
 
-import survey.*;
+import survey.Question;
+import survey.VoteObserver;
 
 public class StatusBar implements VoteObserver {
 

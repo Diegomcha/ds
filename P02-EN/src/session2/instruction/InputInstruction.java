@@ -1,11 +1,11 @@
 package session2.instruction;
 
-import session2.vm.State;
-
 import java.util.Scanner;
 
+import session2.vm.State;
+
 public class InputInstruction extends AbstractInstruction {
-	
+
 	private final Scanner terminal = new Scanner(System.in);
 
 	@Override

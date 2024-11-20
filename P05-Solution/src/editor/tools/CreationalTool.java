@@ -3,36 +3,38 @@ package editor.tools;
 import java.awt.Point;
 
 import editor.changes.CreationChange;
-import editor.core.*;
+import editor.core.EditorWindow;
+import editor.core.Figure;
+import editor.core.Tool;
 
 public abstract class CreationalTool implements Tool {
 
-    protected EditorWindow editor;
-    private Point begin;
-    private Point end;
+	protected EditorWindow editor;
+	private Point begin;
+	private Point end;
 
-    protected CreationalTool(EditorWindow editor) {
-        this.editor = editor;
-    }
+	protected CreationalTool(EditorWindow editor) {
+		this.editor = editor;
+	}
 
-    public void mousePressed(int x, int y) {
-        begin = new Point(x, y);
-    }
+	public void mousePressed(int x, int y) {
+		begin = new Point(x, y);
+	}
 
-    public void mouseMoved(int x, int y) {
-        // Do nothing
-    }
+	public void mouseMoved(int x, int y) {
+		// Do nothing
+	}
 
-    public void mouseReleased(int x, int y) {
-        end = new Point(x, y);
-        Figure figure = doCreateFigure(begin, end);
-        editor.getDrawing().addFigura(figure);
-        
-        editor.addChange(new CreationChange(editor.getDrawing(), figure));
+	public void mouseReleased(int x, int y) {
+		end = new Point(x, y);
+		Figure figure = doCreateFigure(begin, end);
+		editor.getDrawing().addFigura(figure);
 
-        editor.endTool();
-    }
+		editor.addChange(new CreationChange(editor.getDrawing(), figure));
 
-    protected abstract Figure doCreateFigure(Point begin, Point end);
+		editor.endTool();
+	}
+
+	protected abstract Figure doCreateFigure(Point begin, Point end);
 
 }

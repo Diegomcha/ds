@@ -1,9 +1,13 @@
 package main;
 
-import java.io.*;
+import java.io.IOException;
 
-import observers.*;
-import survey.*;
+import observers.Backup;
+import observers.BarGraph;
+import observers.PieChart;
+import observers.StatusBar;
+import survey.Question;
+import survey.TextUserInterface;
 
 public class MainProgram2 {
 
@@ -14,8 +18,8 @@ public class MainProgram2 {
 		PieChart pc = new PieChart();
 		Backup bu = new Backup();
 		StatusBar sb = new StatusBar();
-		
-		//New design
+
+		// New design
 		survey.addObserver(bg);
 		survey.addObserver(pc);
 		survey.addObserver(bu);

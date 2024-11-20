@@ -12,86 +12,85 @@ import figures.triangle.TriangleTool;
 
 public class EditorWindow {
 
-    private Drawing drawing;
-    private History history;
-    private Map<String, Tool> tools;
-    private Tool tool;
-    private Tool selection;
+	private Drawing drawing;
+	private History history;
+	private Map<String, Tool> tools;
+	private Tool tool;
+	private Tool selection;
 
-    public EditorWindow() {
-        drawing = new Drawing();
-        history = new History();
-        tools = new HashMap<>();
-        doCreaHerramientas(tools);
-        tool = selection = tools.get("selection");
-    }
+	public EditorWindow() {
+		drawing = new Drawing();
+		history = new History();
+		tools = new HashMap<>();
+		doCreaHerramientas(tools);
+		tool = selection = tools.get("selection");
+	}
 
-    protected void doCreaHerramientas(Map<String, Tool> tools) {
-        tools.put("rectangle", new RectangleTool(this));
-        tools.put("circle", new CircleTool(this));
-        tools.put("triangle", new TriangleTool(this));
-        tools.put("selection", new SelectionTool(this));
-    }
+	protected void doCreaHerramientas(Map<String, Tool> tools) {
+		tools.put("rectangle", new RectangleTool(this));
+		tools.put("circle", new CircleTool(this));
+		tools.put("triangle", new TriangleTool(this));
+		tools.put("selection", new SelectionTool(this));
+	}
 
-    // $ User interface methods -----------------------------
+	// $ User interface methods -----------------------------
 
-    public void toolButtonClicked(String name) {
-        setTool(tools.get(name));
-    }
+	public void toolButtonClicked(String name) {
+		setTool(tools.get(name));
+	}
 
-    public void mousePressed(int x, int y) {
-        tool.mousePressed(x, y);
-    }
+	public void mousePressed(int x, int y) {
+		tool.mousePressed(x, y);
+	}
 
-    public void mouseMoved(int x, int y) {
-        tool.mouseMoved(x, y);
-    }
+	public void mouseMoved(int x, int y) {
+		tool.mouseMoved(x, y);
+	}
 
-    public void mouseReleased(int x, int y) {
-        tool.mouseReleased(x, y);
-    }
+	public void mouseReleased(int x, int y) {
+		tool.mouseReleased(x, y);
+	}
 
-    // $ Tools Methods ---------------------
+	// $ Tools Methods ---------------------
 
-    public void setTool(Tool tool) {
-        this.tool = tool;
-    }
+	public void setTool(Tool tool) {
+		this.tool = tool;
+	}
 
-    public void finHerramienta() {
-        tool = selection;
-    }
+	public void finHerramienta() {
+		tool = selection;
+	}
 
-    public Tool getTool() {
-        return tool;
-    }
-    
-    // $ History methods -----------------------------
+	public Tool getTool() {
+		return tool;
+	}
 
-    
-    public boolean redo() {
-    	return this.history.redo();
-    }
-    
-    public boolean undo() {
-    	return this.history.undo();
-    }
-    
-    public void addChange(Change c) {
-    	this.history.add(c);
-    }
-    
-    // $ Drawing methods -----------------------------
+	// $ History methods -----------------------------
 
-    public Drawing getDrawing() {
-        return drawing;
-    }
+	public boolean redo() {
+		return this.history.redo();
+	}
 
-    public void dibujar() {
+	public boolean undo() {
+		return this.history.undo();
+	}
 
-        drawing.dibuja();
+	public void addChange(Change c) {
+		this.history.add(c);
+	}
 
-        System.out.println("  [" + tool + " active]");
-        System.out.println();
-    }
+	// $ Drawing methods -----------------------------
+
+	public Drawing getDrawing() {
+		return drawing;
+	}
+
+	public void dibujar() {
+
+		drawing.dibuja();
+
+		System.out.println("  [" + tool + " active]");
+		System.out.println();
+	}
 
 }

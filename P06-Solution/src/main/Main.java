@@ -1,9 +1,13 @@
 package main;
 
-import adapters.*;
+import adapters.MonumentBookmarkAdapter;
+import adapters.PhotoBookmarkAdapter;
+import adapters.RestaurantBookamrkAdapter;
 import database.Database;
-import google.maps.*;
-import model.*;
+import google.maps.Map;
+import model.Monument;
+import model.Photo;
+import model.Restaurant;
 
 public class Main {
 
@@ -31,7 +35,8 @@ public class Main {
 		System.out.println("\n 2. Drawing the map with the bookmarkrs");
 		map.draw();
 
-		// 3. The user briefly presses on the screen to receive information about each item
+		// 3. The user briefly presses on the screen to receive information about each
+		// item
 		System.out.println("\n 3. Short press on each item: information on tooltip");
 		map.shortClick(31, 31); // Click on Monument: Name and author of the monument (Coliseum)
 		map.shortClick(21, 21); // Click on Photo: Description of the photo and user who uploaded it

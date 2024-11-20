@@ -1,6 +1,6 @@
 package outputs.filters;
 
-import java.io.*;
+import java.io.IOException;
 
 import fileSystem.Output;
 

@@ -1,8 +1,16 @@
 package main;
 
-import form.*;
-import validations.*;
-import validations.composite.*;
+import form.Field;
+import form.Form;
+import validations.CheckGreater;
+import validations.CheckLength;
+import validations.CheckLess;
+import validations.CheckNumber;
+import validations.CheckPostalCode;
+import validations.CheckText;
+import validations.CheckValues;
+import validations.composite.CheckAll;
+import validations.composite.CheckAny;
 
 public class Main {
 
@@ -22,12 +30,10 @@ public class Main {
 		form.addField(new Field("Postal Code", new CheckPostalCode()));
 
 		// "Age". Digit and greater than 18
-		form.addField(new Field("Age",
-				new CheckAll(new CheckNumber(), new CheckGreater(18))));
+		form.addField(new Field("Age", new CheckAll(new CheckNumber(), new CheckGreater(18))));
 
 		// "Salary". Digits greater than 800 and less than 1200
-		form.addField(new Field("Salary",
-				new CheckAll(new CheckNumber(), new CheckGreater(800), new CheckLess(1200))));
+		form.addField(new Field("Salary", new CheckAll(new CheckNumber(), new CheckGreater(800), new CheckLess(1200))));
 
 		// "Location". Santander..Barcelona or postal code
 		form.addField(new Field("Location",
@@ -35,9 +41,7 @@ public class Main {
 
 		// "Promotion Code". Text or (a three-digit number)
 		form.addField(new Field("Promotion",
-				new CheckAny(
-						new CheckText(),
-						new CheckAll(new CheckNumber(), new CheckLength(3)))));
+				new CheckAny(new CheckText(), new CheckAll(new CheckNumber(), new CheckLength(3)))));
 
 		form.ask4Data();
 		form.writeForm();

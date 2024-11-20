@@ -1,9 +1,15 @@
 package main;
 
-import java.io.*;
+import java.io.IOException;
 
-import observers.*;
-import survey.*;
+import observers.Activator;
+import observers.Backup;
+import observers.BarGraph;
+import observers.PieChart;
+import observers.Repeater;
+import observers.StatusBar;
+import survey.Question;
+import survey.TextUserInterface;
 
 public class MainProgram5 {
 
@@ -16,8 +22,8 @@ public class MainProgram5 {
 		StatusBar sb = new StatusBar();
 		Activator a3vpc = new Activator(3, pc);
 		Repeater r3vbg = new Repeater(3, bg);
-		
-		//New design
+
+		// New design
 		survey.addObserver(bg);
 		survey.addObserver(pc);
 		survey.addObserver(bu);
@@ -35,10 +41,10 @@ public class MainProgram5 {
 		survey.addObserver(r3vbg);
 
 		/*
-		 * Program 5, the status bar is to start printing from the fourth vote
-		 * and from then on it will only be displayed every two votes (it will be
-		 * printed on the fourth, sixth, eighth, etc. vote). The other graphics will
-		 * continue to be drawn as indicated in the previous point.
+		 * Program 5, the status bar is to start printing from the fourth vote and from
+		 * then on it will only be displayed every two votes (it will be printed on the
+		 * fourth, sixth, eighth, etc. vote). The other graphics will continue to be
+		 * drawn as indicated in the previous point.
 		 */
 		survey.addObserver(new Activator(4, new Repeater(2, sb)));
 

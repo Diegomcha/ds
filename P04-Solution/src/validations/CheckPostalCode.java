@@ -1,6 +1,6 @@
 package validations;
 
-import validations.composite.*;
+import validations.composite.CheckAll;
 
 public class CheckPostalCode extends CheckAll {
 

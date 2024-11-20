@@ -1,7 +1,8 @@
 package google.maps;
 
 import java.awt.Rectangle;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Map {
 	private List<BookMark> bookMarks = new ArrayList<>();

@@ -1,15 +1,17 @@
 package outputs;
-import java.io.*;
+
+import java.io.IOException;
+import java.io.StringWriter;
 
 import fileSystem.Output;
 
 public class InternetOutput implements Output {
-	
+
 	public InternetOutput(String url) {
 		stringWriter = new StringWriter();
 		stringWriter.append("\n--- START Internet[" + url + "]\n");
 	}
-	
+
 	public void send(char c) throws IOException {
 		stringWriter.append(c);
 	}

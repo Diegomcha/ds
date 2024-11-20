@@ -1,7 +1,9 @@
 package adapters;
 
-import google.maps.*;
-import model.*;
+import google.maps.BookMark;
+import google.maps.Coordinates;
+import google.maps.Navigator;
+import model.Monument;
 
 public class MonumentBookmarkAdapter implements BookMark {
 

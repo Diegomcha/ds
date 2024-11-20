@@ -1,6 +1,7 @@
 package fileSystem;
 
-import java.io.*;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class FileSystem {
 

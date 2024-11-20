@@ -1,7 +1,9 @@
 package proposal2;
 
-import google.maps.*;
-import model.*;
+import google.maps.BookMark;
+import google.maps.Coordinates;
+import google.maps.Map;
+import model.Monument;
 
 public class MarcadorMonumento extends Monument implements BookMark {
 

@@ -10,25 +10,25 @@ import editor.util.Point;
  */
 public class TriangleTool extends FigureTool {
 
-    private Point intermediateVertex;
+	private Point intermediateVertex;
 
-    /**
-     * Create a new instance of the TriangleTool.
-     *
-     * @param editor The editor which will make use of the tool.
-     */
-    public TriangleTool(Editor editor) {
-        super(editor);
-    }
+	/**
+	 * Create a new instance of the TriangleTool.
+	 *
+	 * @param editor The editor which will make use of the tool.
+	 */
+	public TriangleTool(Editor editor) {
+		super(editor);
+	}
 
-    @Override
-    public void drag(Point p) {
-        this.intermediateVertex = p;
-    }
+	@Override
+	public void drag(Point p) {
+		this.intermediateVertex = p;
+	}
 
-    @Override
-    protected Figure createFigure(Point startPoint, Point endPoint) {
-        return new Triangle(startPoint, intermediateVertex, endPoint);
-    }
+	@Override
+	protected Figure createFigure(Point startPoint, Point endPoint) {
+		return new Triangle(startPoint, intermediateVertex, endPoint);
+	}
 
 }

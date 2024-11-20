@@ -1,6 +1,6 @@
 package outputs.filters;
 
-import java.io.*;
+import java.io.IOException;
 
 import fileSystem.Output;
 
@@ -22,7 +22,7 @@ public class Distributor implements Output {
 		output1.close();
 		output2.close();
 	}
-	
+
 }
 
 // What pattern is it?

@@ -1,6 +1,7 @@
 package observers;
 
-import survey.*;
+import survey.Question;
+import survey.VoteObserver;
 
 public class BarGraph implements VoteObserver {
 
@@ -8,10 +9,10 @@ public class BarGraph implements VoteObserver {
 	public void receivedVote(Question survey) {
 		int gyv = survey.getYesVotes();
 		int gnv = survey.getNoVotes();
-		
+
 		StringBuilder graph = new StringBuilder();
 		graph.append("Drawing the Bar Graph\n");
-		
+
 		graph.append("YES: ");
 		while (gyv > 0) {
 			graph.append("X");

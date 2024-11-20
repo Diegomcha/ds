@@ -1,6 +1,7 @@
 package editor.changes;
 
-import editor.core.*;
+import editor.core.Change;
+import editor.core.Figure;
 
 public class MovementChange implements Change {
 

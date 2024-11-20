@@ -2,7 +2,6 @@ package visitor;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 import nodes.Program;
 import nodes.expression.Addition;
@@ -43,12 +42,13 @@ public class EvalVisitor implements Visitor {
 	public Object visit(Read read, Object param) {
 		// Emulate reading from memory
 		// - Dynamic
-		String randInt = Integer.toString(new Random().nextInt());
-		System.err.println(String.format("(Memory: %s = %s)", read.var.name, randInt));
+		// String value = Integer.toString(new Random().nextInt());
+		// System.err.println(String.format("(Memory: %s = %s)", read.var.name,
+		// value));
 		// - Static
-		// String staticInt = "10";
-		
-		variableMap.put(read.var.name, new IntConstant(randInt));
+		String value = "10";
+
+		variableMap.put(read.var.name, new IntConstant(value));
 		return null;
 	}
 

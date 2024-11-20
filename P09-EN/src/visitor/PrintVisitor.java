@@ -64,7 +64,7 @@ public class PrintVisitor implements Visitor {
 	public Object visit(Division div, Object param) {
 		// Parenthesis
 		boolean parenthesis = param != null && ((int) param) == 1;
-		
+
 		if (parenthesis)
 			System.out.print("(");
 		div.left.accept(this, 1);

@@ -1,9 +1,14 @@
 package main;
 
-import java.io.*;
+import java.io.IOException;
 
-import observers.*;
-import survey.*;
+import observers.Activator;
+import observers.Backup;
+import observers.BarGraph;
+import observers.PieChart;
+import observers.StatusBar;
+import survey.Question;
+import survey.TextUserInterface;
 
 public class MainProgram3 {
 
@@ -15,8 +20,8 @@ public class MainProgram3 {
 		Backup bu = new Backup();
 		StatusBar sb = new StatusBar();
 		Activator a3vpc = new Activator(3, pc);
-		
-		//New design
+
+		// New design
 		survey.addObserver(bg);
 		survey.addObserver(pc);
 		survey.addObserver(bu);
@@ -28,9 +33,9 @@ public class MainProgram3 {
 		survey.removeObserver(bg);
 
 		/*
-		 * Program 3, instead of drawing the pie chart with each vote, it is only
-		 * drawn from the third vote onwards (and then drawn with each vote). The status
-		 * bar will continue to be shown with each vote.
+		 * Program 3, instead of drawing the pie chart with each vote, it is only drawn
+		 * from the third vote onwards (and then drawn with each vote). The status bar
+		 * will continue to be shown with each vote.
 		 */
 		survey.addObserver(a3vpc);
 

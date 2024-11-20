@@ -1,6 +1,7 @@
 package observers;
 
-import survey.*;
+import survey.Question;
+import survey.VoteObserver;
 
 public class PieChart implements VoteObserver {
 
@@ -10,7 +11,7 @@ public class PieChart implements VoteObserver {
 		double gnv = survey.getNoVotes();
 		double vydegree = (gyv / (gyv + gnv)) * 360;
 		double vndegree = (gnv / (gyv + gnv)) * 360;
-		
+
 		StringBuilder graph = new StringBuilder();
 		graph.append("Drawing a Pie Chart-->");
 		graph.append(" Yes: " + vydegree);
