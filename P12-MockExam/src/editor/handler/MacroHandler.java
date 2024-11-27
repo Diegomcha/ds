@@ -1,13 +1,13 @@
-package editor.tool;
+package editor.handler;
 
 import editor.commands.Command;
 import editor.commands.Macro;
 
-public class MacroTool implements Tool {
+public class MacroHandler implements Handler {
 	
 	private final Macro macro;
 
-	public MacroTool(Macro macro) {
+	public MacroHandler(Macro macro) {
 		this.macro = macro;
 	}
 

@@ -1,8 +1,9 @@
 package editor;
 
 import editor.commands.Command;
+import editor.handler.ExecHandler;
+import editor.handler.Handler;
 import editor.manager.MacrosManager;
-import editor.tool.Tool;
 
 public class Editor {
 
@@ -14,16 +15,16 @@ public class Editor {
 		return this.content;
 	}
 	
-	// Tools
+	// Handlers
 
-	private Tool activeTool;
+	private Handler activeHandler = new ExecHandler(this.getContent());
 
-	public void setActiveTool(Tool tool) {
-		this.activeTool = tool;
+	public void setActiveHandler(Handler handler) {
+		this.activeHandler = handler;
 	}
 
 	public void run(Command cmd) {
-		this.activeTool.handle(cmd);
+		this.activeHandler.handle(cmd);
 	}
 
 	// Managers

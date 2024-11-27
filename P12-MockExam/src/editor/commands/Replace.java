@@ -2,7 +2,7 @@ package editor.commands;
 
 import java.util.regex.Pattern;
 
-import editor.Editor;
+import editor.Content;
 
 /**
  * Command
@@ -18,8 +18,9 @@ public class Replace implements Command {
 	}
 	
 	@Override
-	public void execute(Editor editor) {
-		editor.getContent().setText(new StringBuilder(editor.getContent().getText().toString().replaceAll(Pattern.quote(this.replaceStr), this.replaceWith)));
+	public void execute(Content content) {
+		content.setText(new StringBuilder(
+				content.getText().toString().replaceAll(Pattern.quote(this.replaceStr), this.replaceWith)));
 	}
 
 }

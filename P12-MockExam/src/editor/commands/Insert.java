@@ -1,6 +1,6 @@
 package editor.commands;
 
-import editor.Editor;
+import editor.Content;
 
 /**
  * Command
@@ -14,9 +14,9 @@ public class Insert implements Command {
 	}
 	
 	@Override
-	public void execute(Editor editor) {
+	public void execute(Content content) {
 		for (int i = 1; i < this.args.length; i++)
-			editor.getContent().getText().append(this.args[i] + " ");
+			content.getText().append(this.args[i] + " ");
 	}
 
 }

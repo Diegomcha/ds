@@ -1,0 +1,41 @@
+Used pattern: Command
+Participants
+-------------
+1) Command --> Command
+   Methods:
+   - Execute() --> execute(Content)
+2) ConcreteCommand --> Open, Insert, RemoveLastWord, Replace, Macro
+   Methods:
+   - Execute() --> execute(Content)
+3) Receiver --> Content
+   Methods:
+   - Action() --> setText(StringBuilder), getText()
+4) Invoker --> Handler
+
+Used pattern: Composite
+Participants
+-------------
+1) Component --> Action
+   Methods:
+   - Operation() --> execute(Content)
+2) Leaf --> Open, Insert, RemoveLastWord, Replace
+   Methods:
+   - Operation() --> execute(Content)
+3) Composite --> Macro   
+   Methods:
+   - Operation() --> execute(Content)
+   - Add(Component) --> addCmd(Command)
+
+Used pattern: Strategy
+Participants
+-------------
+1) Strategy --> Handler
+   Methods:
+   - execute(Data) --> handle(Command)
+2) ConcreteStrategy --> ExecHandler, MacroHandler
+   Methods:
+   - execute(Data) --> handle(Command)
+3) Context --> Editor
+   Methods:
+   - setStrategy(Strategy) --> setActiveHandler(Handler)
+   - execute(Data) --> handle(Command)

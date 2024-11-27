@@ -1,7 +1,7 @@
-package editor.tool;
+package editor.handler;
 
 import editor.commands.Command;
 
-public interface Tool {
+public interface Handler {
 	void handle(Command cmd);
 }

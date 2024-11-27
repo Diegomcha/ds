@@ -5,35 +5,36 @@ import java.util.Map;
 
 import editor.Editor;
 import editor.commands.Macro;
-import editor.tool.ExecTool;
-import editor.tool.MacroTool;
+import editor.handler.ExecHandler;
+import editor.handler.MacroHandler;
 
 public class MacrosManager {
-	private final Map<String, Macro> macros = new HashMap<>();
 	private final Editor editor;
 	
-	private String name;
-	private Macro macro;
-
 	public MacrosManager(Editor editor) {
 		this.editor = editor;
 	}
 	
 	// Creation
+
+	private String name;
+	private Macro macro;
 	
 	public void startRecording(String name) {
 		this.name = name;
 		this.macro = new Macro();
-		this.editor.setActiveTool(new MacroTool(macro));
+		this.editor.setActiveHandler(new MacroHandler(macro));
 	}
 	
 	public void stopRecording() {
 		this.macros.put(name, macro);
-		this.editor.setActiveTool(new ExecTool(editor));
+		this.editor.setActiveHandler(new ExecHandler(editor.getContent()));
 	}
 	
 	// Storage
-	
+
+	private final Map<String, Macro> macros = new HashMap<>();
+
 	public Macro get(String name) {
 		return this.macros.get(name);
 	}

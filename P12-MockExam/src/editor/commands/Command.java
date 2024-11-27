@@ -1,10 +1,10 @@
 package editor.commands;
 
-import editor.Editor;
+import editor.Content;
 
 /**
  * Command
  */
 public interface Command {
-	void execute(Editor editor);
+	void execute(Content content);
 }

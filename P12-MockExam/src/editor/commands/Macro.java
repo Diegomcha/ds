@@ -3,7 +3,7 @@ package editor.commands;
 import java.util.ArrayList;
 import java.util.List;
 
-import editor.Editor;
+import editor.Content;
 
 /**
  * Command / Composite
@@ -13,9 +13,9 @@ public class Macro implements Command {
 	private final List<Command> cmds = new ArrayList<>();
 	
 	@Override
-	public void execute(Editor editor) {
+	public void execute(Content content) {
 		for (Command cmd: cmds)
-			editor.run(cmd);
+			cmd.execute(content);
 	}
 	
 	public void addCmd(Command cmd) {

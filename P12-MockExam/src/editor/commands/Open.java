@@ -1,12 +1,11 @@
 package editor.commands;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import editor.Editor;
+import editor.Content;
 
 /**
  * Command
@@ -16,15 +15,12 @@ public class Open implements Command {
 	private final String filename;
 	
 	public Open(String filename) throws FileNotFoundException {
-		if (!new File(filename).exists())
-			throw new FileNotFoundException("Provided file does not exist");
-		
 		this.filename = filename;
 	}
 	
 	@Override
-	public void execute(Editor editor) {
-		editor.getContent().setText(readFile(this.filename));
+	public void execute(Content content) {
+		content.setText(readFile(this.filename));
 	}
 
 	private StringBuilder readFile(String filename) {
