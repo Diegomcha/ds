@@ -1,0 +1,27 @@
+Used pattern: Command
+Participants
+-------------
+1) Command --> Action
+   Methods:
+   - Execute() --> execute(Editor)
+2) ConcreteCommand --> Open, Insert, RemoveLastWord, Replace, Macro
+   Methods:
+   - Execute() --> execute(Editor)
+3) Receiver --> Editor
+   Methods:
+   - Action() --> setText(StringBuilder), getText()
+4) Invoker --> ActionManager
+
+Used pattern: Composite
+Participants
+-------------
+1) Component --> Action
+   Methods:
+   - Operation() --> execute(Editor)
+2) Leaf --> Open, Insert, RemoveLastWord, Replace
+   Methods:
+   - Operation() --> execute(Editor)
+3) Composite --> Macro   
+   Methods:
+   - Operation() --> execute(Editor)
+   - Add(Component) --> addAction(Action)

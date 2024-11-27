@@ -1,15 +1,20 @@
 package main;
 
-import java.io.*;
-import java.util.regex.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import editor.Editor;
+import editor.commands.Insert;
+import editor.commands.Open;
+import editor.commands.RemoveLastWord;
+import editor.commands.Replace;
 
 public class Main {
 	private static BufferedReader in;
-	private static StringBuilder text;
 
 	public static void main(String[] args) throws IOException {
 		in = new BufferedReader(new InputStreamReader(System.in));
-		text = new StringBuilder("");
 
 		System.out.println("Actions");
 		System.out.println("--------");
@@ -25,7 +30,9 @@ public class Main {
 		System.out.println("stop\t\t\t// ends the current macro recording");
 		System.out.println("execute <macro>\t\t// executes the macro named macroName");
 		System.out.println();
-
+		
+		Editor editor = new Editor();
+		
 		do {
 			System.out.print("> ");
 
@@ -37,42 +44,27 @@ public class Main {
 				return;
 
 			if (line[0].equals("open")) {
-				text = readFile(line[1]);
+				editor.run(new Open(line[1]));
 			} else if (line[0].startsWith("ins")) {
-				for (int i = 1; i < line.length; i++) {
-					text.append(line[i] + " ");
-				}
+				editor.run(new Insert(line));
 			} else if (line[0].startsWith("rem")) {
-				int indexOfLastWord = text.toString().trim().lastIndexOf(" ");
-				if (indexOfLastWord == -1)
-					text = new StringBuilder("");
-				else
-					text.setLength(indexOfLastWord + 1);
+				editor.run(new RemoveLastWord());
 			} else if (line[0].startsWith("rep")) {
-				text = new StringBuilder(text.toString().replaceAll(Pattern.quote(line[1]), line[2]));
+				editor.run(new Replace(line[1], line[2]));
 			} else if (line[0].startsWith("rec")) {
-				;
+				editor.getMacros().startRecording(line[1]);
 			} else if (line[0].startsWith("stop")) {
-				;
+				editor.getMacros().stopRecording();
 			} else if (line[0].startsWith("exe")) {
-				;
+				if (!editor.getMacros().has(line[1]))
+					System.out.println("Macro does not exist");
+				else editor.run(editor.getMacros().get(line[1]));
 			} else {
 				System.out.println("Unknown instruction");
 			}
 
-			System.out.println(text);
+			System.out.println(editor.getContent().getText());
 
 		} while (true);
-	}
-
-	static StringBuilder readFile(String filename) throws IOException {
-		BufferedReader input = new BufferedReader(new FileReader(filename));
-		String line;
-		StringBuilder result = new StringBuilder();
-		while ((line = input.readLine()) != null) {
-			result.append(line);
-		}
-		input.close();
-		return result;
 	}
 }
