@@ -1,6 +1,6 @@
-# Ejercicios prácticos de diseño de software
+# Software design practical exercises
 
-- **Asignatura:** Diseño del Software (GIISOF01-3-004)  
-- **Grado:** Ingeniería Informática del Software (Universidad de Oviedo)  
+- **Course:** Software Design (GIISOF01-3-004)  
+- **Degree:** Software Computer Engineering (University of Oviedo)  
 
-Este repositorio contiene los ejercicios prácticos realizados durante la asignatura *Diseño del Software*, centrados en la aplicación de principios de diseño orientado a objetos y patrones de diseño en el desarrollo de software.
+This repository contains the practical exercises completed during the *Software Design* course, focused on applying object-oriented design principles and design patterns in software development.
